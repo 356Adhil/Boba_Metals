@@ -1,15 +1,16 @@
 import React from 'react'
 import Nav from '../../components/user/Nav'
-import ProductDetails from '../../components/user/ProductDetails'
+import Products from '../../components/user/Products'
 import Footer from '../../components/user/Footer'
 
-function ProductDetailPage() {
+function ProductsPage() {
   return (
     <>
     <Nav />
-    <ProductDetails />
+    <Products />
     <Footer />
-    </>  )
+    </>
+  )
 }
 
-export default ProductDetailPage
+export default ProductsPage

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import Home from './Home';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,26 +9,25 @@ function Nav() {
   };
 
   return (
-    <>
-    <nav className={'bg-blue-900 p-4 flex justify-between items-center fixed top-0 w-full'}>
+    <nav className="bg-blue-900 p-4 flex justify-between items-center fixed top-0 w-full z-20">
       <div className="flex items-center">
         {/* Logo and Title */}
-        <div className="text-white font-bold text-lg">
-        {/* <span>
+        <div className="text-white font-bold text-lg flex items-center space-x-2">
           <img
             src={process.env.PUBLIC_URL + '/logo512.png'}
             alt="Logo"
-            className="h-8 w-8" // Adjust the height and width as needed
+            className="h-8 w-8"
           />
-        </span> */}
-        <span className="ml-2">Boba Metals</span>
+          <span>Boba Metals</span>
         </div>
       </div>
       <div className="md:hidden relative">
         {/* Hamburger Menu Icon */}
         <button onClick={toggleMenu} className="text-white focus:outline-none">
           <svg
-            className={`h-6 w-6 transition-transform duration-300 transform ${menuOpen ? 'rotate-90' : ''}`}
+            className={`h-6 w-6 transition-transform duration-300 transform ${
+              menuOpen ? 'rotate-90' : ''
+            }`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -38,35 +37,70 @@ function Nav() {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              d={menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
             />
           </svg>
         </button>
         {/* Navigation Links */}
         <div
-          className={`space-y-4 absolute top-full right-0 bg-blue-900 mt-3 py-4 px-7 ${
-            menuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'
-          } transition-all duration-300 origin-top transform`}
-          style={{
-            borderBottomLeftRadius: '1rem',
-            borderBottomRightRadius: '1rem',
-          }}
+          className={`${
+            menuOpen ? 'block' : 'hidden'
+          } absolute top-full right-0 bg-blue-900 mt-3 py-4 px-7 transition-all duration-300 origin-top space-y-3 transform rounded-b-lg`}
         >
-          <a href="#" className="text-white block hover:text-gray-300 whitespace-nowrap">Home</a>
-          <a href="#" className="text-white block hover:text-gray-300 whitespace-nowrap">Products</a>
-          <a href="#" className="text-white block hover:text-gray-300 whitespace-nowrap">About</a>
-          <a href="#" className="text-white block hover:text-gray-300 whitespace-nowrap">Contact Us</a>
+          <Link
+            to={`/`}
+            className="block text-white hover:text-gray-300 whitespace-nowrap"
+          >
+            Home
+          </Link>
+          <Link
+            to={`/products`}
+            className="block text-white hover:text-gray-300 whitespace-nowrap"
+          >
+            Products
+          </Link>
+          <Link
+            to={`/about`}
+            className="block text-white hover:text-gray-300 whitespace-nowrap"
+          >
+            About
+          </Link>
+          <Link
+            to={`/contact`}
+            className="block text-white hover:text-gray-300 whitespace-nowrap"
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
       <div className="hidden md:flex space-x-10">
         {/* Navigation Links (Desktop) */}
-        <a href="#" className="text-white hover:text-gray-300 whitespace-nowrap">Home</a>
-        <a href="#" className="text-white hover:text-gray-300 whitespace-nowrap">Products</a>
-        <a href="#" className="text-white hover:text-gray-300 whitespace-nowrap">About</a>
-        <a href="#" className="text-white hover:text-gray-300 whitespace-nowrap">Contact Us</a>
+        <Link
+          to={`/`}
+          className="text-white hover:text-gray-300 whitespace-nowrap"
+        >
+          Home
+        </Link>
+        <Link
+          to={`/products`}
+          className="text-white hover:text-gray-300 whitespace-nowrap"
+        >
+          Products
+        </Link>
+        <Link
+          to={`/about`}
+          className="text-white hover:text-gray-300 whitespace-nowrap"
+        >
+          About
+        </Link>
+        <Link
+          to={`/contact`}
+          className="text-white hover:text-gray-300 whitespace-nowrap"
+        >
+          Contact Us
+        </Link>
       </div>
     </nav>
-    </>
   );
 }
 
